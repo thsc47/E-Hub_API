@@ -1,18 +1,17 @@
-const jwt = require("jsonwebtoken");
-const bcript = require("bcryptjs");
+const Jwt = require("../controllers/auth/JWT");
 
-const Auth = (req, res, next) => {
+const Auth = async (req, res, next) => {
   const auth = req.get("Authorization");
   if (!auth) {
-    res.status(401).json({unauthorized: "Lack of token"})
+    throw new Error("Lack of token");
   }
   const [, token] = auth.split(" ");
   try {
-    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = { ...token };
+    const decodedToken = await Jwt.ValidToken(token);
+    req.user = { ...decodedToken };
     next();
   } catch (error) {
-    res.status(401).json({unauthorized: "Invalid token"})
+    throw new Error("Invalid token");
   }
 };
 

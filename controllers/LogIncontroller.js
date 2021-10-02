@@ -1,6 +1,6 @@
 const User = require("../models/User.model");
-const Bcript = require("../controllers/auth/Bcript")
-const jwt = require("jsonwebtoken");
+const Bcript = require("../controllers/auth/Bcript");
+const Jwt = require("../controllers/auth/JWT");
 
 class LogInController {
   static async handle(username, password) {
@@ -11,8 +11,7 @@ class LogInController {
     if (!user) {
       throw new Error("Wrong username or password");
     }
-    const validation = await Bcript.comparePassword(password, user.password)
-    console.log(validation)
+    const validation = await Bcript.comparePassword(password, user.password);
     if (!validation) {
       throw new Error("Wrong username or password");
     }
@@ -20,10 +19,8 @@ class LogInController {
       id: user._id,
       username: user.username,
     };
-    const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "1d",
-    });
-    return ({ user: payload, token });
+    const token = await Jwt.sign(payload);
+    return { user: payload, token };
   }
 }
 
