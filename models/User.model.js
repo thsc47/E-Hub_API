@@ -19,7 +19,7 @@ const userSchema = new Schema(
         anuncioID: { type: String, required: true },
       },
     ],
-    AdvertisementID: { type: String, required: true },
+    SalesID: { type: Schema.Types.ObjectId, ref: "salesAD" },
   },
   {
     timestamps: true,
