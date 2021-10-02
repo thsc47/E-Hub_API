@@ -1,5 +1,5 @@
 const User = require("../models/User.model");
-const bcript = require("bcryptjs");
+const Bcript = require("../controllers/auth/Bcript")
 const jwt = require("jsonwebtoken");
 
 class LogInController {
@@ -11,8 +11,8 @@ class LogInController {
     if (!user) {
       throw new Error("Wrong username or password");
     }
-
-    const validation = bcript.compareSync(password, user.password);
+    const validation = await Bcript.comparePassword(password, user.password)
+    console.log(validation)
     if (!validation) {
       throw new Error("Wrong username or password");
     }
