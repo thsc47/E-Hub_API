@@ -1,5 +1,5 @@
 const User = require("../models/User.model");
-const bcript = require("bcryptjs");
+const Bcript = require("../controllers/auth/Bcript")
 
 class SignInController {
   static async handle(username, password) {
@@ -12,11 +12,9 @@ class SignInController {
       if (user) {
         throw new Error("User already exists");
       }
-
-      const passwordHash = bcript.hashSync(password, 12);
       await User.create({
         username,
-        password: passwordHash,
+        password: await Bcript.createHash(password),
       });
     } catch (error) {
         throw new Error(error);
