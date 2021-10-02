@@ -1,6 +1,6 @@
 const Jwt = require("../controllers/auth/JWT");
 
-const Auth = async (req, res, next) => {
+const Auth = async (req, next) => {
   const auth = req.get("Authorization");
   if (!auth) {
     throw new Error("Lack of token");
