@@ -7,8 +7,8 @@ const userSchema = new Schema(
     email: { type: String, required: true },
     name: { type: String, required: true },
     age: { type: Number, required: true },
-    CPF: { type: Number, required: true },
-    photo: { type: String },
+    cpf: { type: Number, required: true },
+    photo: { type: String, default: null },
     street: { type: String, required: true },
     number: { type: Number, required: true },
     district: { type: String, required: true },
@@ -16,10 +16,10 @@ const userSchema = new Schema(
     zipcode: { type: Number, required: true },
     wishlist: [
       {
-        anuncioID: { type: String, required: true },
+        anuncioID: { type: String, default: null },
       },
     ],
-    SalesID: { type: Schema.Types.ObjectId, ref: "salesAD" },
+    SalesID: { type: Schema.Types.ObjectId, ref: "salesAD", default: null },
   },
   {
     timestamps: true,
