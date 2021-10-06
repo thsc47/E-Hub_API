@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const signInRouter = Router();
-const SignInController = require("../../controllers/SignInController");
+const SignInController = require("../../controllers/access/SignInController")
 
 signInRouter.post("/", async (req, res) => {
   try {

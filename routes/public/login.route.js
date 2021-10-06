@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const LogInController = require("../../controllers/LogIncontroller")
+const LogInController = require("../../controllers/access/LogIncontroller")
 const loginRouter = Router();
 
 loginRouter.post("/", async (req, res) => {

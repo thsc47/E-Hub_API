@@ -1,6 +1,6 @@
-const User = require("../models/User.model");
-const Bcript = require("../controllers/auth/Bcript");
-const Jwt = require("../controllers/auth/JWT");
+const User = require("../../models/User.model");
+const Bcript = require("../auth/Bcript");
+const Jwt = require("../auth/JWT");
 
 class LogInController {
   static async handle(username, password) {

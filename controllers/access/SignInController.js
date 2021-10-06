@@ -1,5 +1,5 @@
-const User = require("../models/User.model");
-const Bcript = require("../controllers/auth/Bcript");
+const User = require("../../models/User.model");
+const Bcript = require("../auth/Bcript");
 
 class SignInController {
   static async handle(req) {
