@@ -1,4 +1,4 @@
-const SalesAd = require("../models/SalesAd.model")
+const SalesAd = require("../../models/SalesAd.model")
 class CreateNewAd {
     static async execute(req) {
         try {
