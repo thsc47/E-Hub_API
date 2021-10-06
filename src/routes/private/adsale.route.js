@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const CreateNewAd = require('../../controllers/ads/createNewAd.controller')
+const DeleteOneAd = require('../../controllers/ads/deleteOneAd.controller')
 const GetAllAds = require('../../controllers/ads/getAllAds.controller')
 const GetOneAd = require('../../controllers/ads/getOneAd.controller')
 const UpdateOneAd = require('../../controllers/ads/updateOneAd.controller')
@@ -41,8 +42,13 @@ adSaleRouter.put('/my/edit', async (req, res) => {
   }
 })
 
-adSaleRouter.delete('/ad-sale/:ID', (req, res) => {
-  //     //TODO - Deleta um anúncio
+adSaleRouter.delete('/my/delete', async (req, res) => {
+  try {
+    await DeleteOneAd.execute(req)
+    res.status(204).send()
+  } catch (error) {
+    res.status(500).json(error.message)
+  }
 })
 
 adSaleRouter.get('/ad-sale/all', (req, res) => {
