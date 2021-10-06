@@ -2,6 +2,7 @@ const { Router } = require('express')
 const CreateNewAd = require('../../controllers/ads/createNewAd.controller')
 const GetAllAds = require('../../controllers/ads/getAllAds.controller')
 const GetOneAd = require('../../controllers/ads/getOneAd.controller')
+const UpdateOneAd = require('../../controllers/ads/updateOneAd.controller')
 const adSaleRouter = Router()
 
 adSaleRouter.post('/new', async (req, res) => {
@@ -31,12 +32,21 @@ adSaleRouter.get('/my/search', async (req, res) => {
   }
 })
 
-adSaleRouter.get('/ad-sale/all', (req, res) => {
-  //     //TODO - Devolve todos anúncio [Deve ser chamada apenas pelo front-end]
+adSaleRouter.put('/my/edit', async (req, res) => {
+  try {
+    const result = await UpdateOneAd.execute(req)
+    res.status(201).json(result)
+  } catch (error) {
+    res.status(500).json(result.message)
+  }
 })
 
-adSaleRouter.put('/ad-sale/:ID', (req, res) => {
-  //     //TODO - Edita um anúncio
+adSaleRouter.delete('/ad-sale/:ID', (req, res) => {
+  //     //TODO - Deleta um anúncio
+})
+
+adSaleRouter.get('/ad-sale/all', (req, res) => {
+  //     //TODO - Devolve todos anúncio [Deve ser chamada apenas pelo front-end]
 })
 
 module.exports = adSaleRouter
