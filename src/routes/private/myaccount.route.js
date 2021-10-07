@@ -1,5 +1,6 @@
 const { Router } = require('express')
-const getAllData = require('../../controllers/myaccount/getAllData')
+const getAllData = require('../../controllers/myaccount/getAllData.controller')
+const UpdateMyAccount = require('../../controllers/myaccount/updateMyAccount.controller')
 
 const myAccountRouter = Router()
 
@@ -12,8 +13,13 @@ myAccountRouter.get('/', async (req, res) => {
   }
 })
 
-myAccountRouter.put('/myaccount/edit/:ID', (req, res) => {
-  //TODO - Atualiza o id desejado
+myAccountRouter.put('/edit', async (req, res) => {
+  try {
+    const result = await UpdateMyAccount.execute(req)
+    res.json(result)
+  } catch (error) {
+    res.status(500).json(error.message)
+  }
 })
 
 myAccountRouter.delete('/myaccount', (req, res) => {
