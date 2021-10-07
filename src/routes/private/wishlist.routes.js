@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const AddToWishlist = require('../../controllers/wishlist/addToWishlist.controller')
 const GetWishlist = require('../../controllers/wishlist/getWishlist.controller')
 
 const wishlistRouter = Router()
@@ -12,8 +13,13 @@ wishlistRouter.get('/', async (req, res) => {
   }
 })
 
-wishlistRouter.post('/myaccount/wishlist', (req, res) => {
-  //TODO - Adiciona um item a wishlist
+wishlistRouter.post('/add', (req, res) => {
+  try {
+    AddToWishlist.execute(req)
+    res.send()
+  } catch (error) {
+    res.status(500).json({ msg: error, message })
+  }
 })
 
 wishlistRouter.delete('/myaccount/wishlist', (req, res) => {

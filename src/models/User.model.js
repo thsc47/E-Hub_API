@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose')
 
 const userSchema = new Schema(
   {
@@ -14,16 +14,12 @@ const userSchema = new Schema(
     district: { type: String, required: true },
     city: { type: String, required: true },
     zipcode: { type: Number, required: true },
-    wishlist: [
-      {
-        anuncioID: { type: String, default: null },
-      },
-    ],
-    SalesID: { type: Schema.Types.ObjectId, ref: "salesAD", default: null },
+    wishlist: [{ type: String, default: null }],
+    SalesID: { type: Schema.Types.ObjectId, ref: 'salesAD', default: null },
   },
   {
     timestamps: true,
   }
-);
+)
 
-module.exports = model("User", userSchema);
+module.exports = model('User', userSchema)
