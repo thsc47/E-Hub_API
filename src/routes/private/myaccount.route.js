@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const DeleteAUser = require('../../controllers/myaccount/deleteAUser.controller')
 const getAllData = require('../../controllers/myaccount/getAllData.controller')
 const UpdateMyAccount = require('../../controllers/myaccount/updateMyAccount.controller')
 
@@ -22,8 +23,13 @@ myAccountRouter.put('/edit', async (req, res) => {
   }
 })
 
-myAccountRouter.delete('/myaccount', (req, res) => {
-  //TODO - Devolve todos os dados do usuário.
+myAccountRouter.delete('/delete',async (req, res) => {
+  try {
+    await DeleteAUser.execute(req)
+    res.status(204).send()
+  } catch (error) {
+    res.status(500).json({error: error.message})
+  }
 })
 
 myAccountRouter.get('/myaccount/wishlist', (req, res) => {

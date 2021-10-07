@@ -1,5 +1,5 @@
-const User = require("../../models/User.model");
-const Bcript = require("../auth/Bcript");
+const User = require('../../models/User.model')
+const Bcript = require('../auth/Bcript')
 
 class SignInController {
   static async handle(req) {
@@ -15,17 +15,17 @@ class SignInController {
       district,
       city,
       zipcode,
-    } = req;
+    } = req
     try {
       if (!username || !password) {
-        throw new Error("Missing fields");
+        throw new Error('Missing fields')
       }
 
-      const user = await User.findOne({ username });
+      const user = await User.findOne({ username })
       if (user) {
-        throw new Error("User already exists");
+        throw new Error('User already exists')
       }
-      await User.create({
+      const newUser = await User.create({
         username,
         password: await Bcript.createHash(password),
         email,
@@ -37,11 +37,12 @@ class SignInController {
         district,
         city,
         zipcode,
-      });
+      })
+      return {created: `Id: ${newUser._id} user: ${username}`}
     } catch (error) {
-      throw new Error(error);
+      throw new Error(error)
     }
   }
 }
 
-module.exports = SignInController;
+module.exports = SignInController
