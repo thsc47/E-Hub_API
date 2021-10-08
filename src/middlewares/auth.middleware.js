@@ -8,7 +8,7 @@ const Auth = async (req, res, next) => {
   const [, token] = auth.split(" ");
   try {
     const decodedToken = await Jwt.ValidToken(token);
-    req.user = { ...decodedToken };
+    req.user = { ...decodedToken, token: token };
     next();
   } catch (error) {
     throw new Error("Invalid token");
