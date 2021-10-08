@@ -10,7 +10,6 @@ class AddToWishlist {
         { $push: { wishlist: ad } },
         { new: true }
       )
-      console.log(addedWishlist)
     } catch (error) {
       console.error(error.message)
     }

@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const AddToWishlist = require('../../controllers/wishlist/addToWishlist.controller')
 const GetWishlist = require('../../controllers/wishlist/getWishlist.controller')
+const RemoveAWishlistItem = require('../../controllers/wishlist/removeAWishlistItem.controller')
 
 const wishlistRouter = Router()
 
@@ -22,8 +23,13 @@ wishlistRouter.post('/add', (req, res) => {
   }
 })
 
-wishlistRouter.delete('/myaccount/wishlist', (req, res) => {
-  //TODO - deleta um item a wishlist
+wishlistRouter.delete('/delete', async (req, res) => {
+  try {
+    await RemoveAWishlistItem.execute(req)
+    res.status(204).send()
+  } catch (error) {
+    res.status(500).json(error.message)
+  }
 })
 
 module.exports = wishlistRouter
