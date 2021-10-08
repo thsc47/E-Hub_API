@@ -11,6 +11,11 @@ class Jwt {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
     return decodedToken;
   }
+
+  static async DecodedToken(token) {
+    const decodedToken = jwt.decode(token, process.env.JWT_SECRET);
+    return decodedToken;
+  }
 }
 
 module.exports = Jwt;
