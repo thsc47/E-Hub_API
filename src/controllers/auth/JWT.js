@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 class Jwt {
   static async sign(payload) {
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: "1d",
+      expiresIn: "15m",
     });
     return token;
   }
