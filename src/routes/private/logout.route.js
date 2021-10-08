@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const Logout = require('../../controllers/logout/logout.controller')
+const Logout = require('../../controllers/access/logout.controller')
 
 const logoutRouter = Router()
 
