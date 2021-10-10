@@ -1,10 +1,9 @@
 const Jwt = require('../controllers/auth/JWT')
-const jwt = require('jsonwebtoken')
 const Blocklist = require('../../redis/controllers/blocklist.controller')
 
 async function validToken(token) {
   if (await Blocklist.hasToken(token)) {
-    throw new jwt.JsonWebTokenError('Invalid Token')
+    throw new Error('Invalid Token')
   }
 }
 
@@ -20,7 +19,7 @@ const Auth = async (req, res, next) => {
     req.user = { ...decodedToken, token: token }
     next()
   } catch (error) {
-    throw new Error('Invalid token')
+    res.status(401).json({error: error.message})
   }
 }
 
