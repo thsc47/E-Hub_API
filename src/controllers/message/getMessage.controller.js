@@ -3,13 +3,17 @@ const chatAsync = require('../../models/ChatAsync.model')
 class GetMessageRouter {
   static async execute(req) {
     try {
-      const { params } = req
-      const { id } = req.user
+      const { id: reciver } = req.params
+      const { id:sender } = req.user
+
+      if(reciver === sender){
+        throw new Error('Reciver and Sender have the same ID')
+      }
 
       const result = await chatAsync.find({
         $or: [
-          { userID1: id, userID2: params.id },
-          { userID1: params.id, userID2: id }
+          { userID1: sender, userID2: reciver },
+          { userID1: reciver, userID2: sender }
         ]
       })
       return result
