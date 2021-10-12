@@ -4,14 +4,14 @@ const Refresh = require('./refresh.middleware')
 
 async function validToken(token) {
   if (await Blocklist.hasToken(token)) {
-    throw new Error('Invalid Token')
+    res.status(401).json({ error: 'Invalid token' })
   }
 }
 
 const Auth = async (req, res, next) => {
   const auth = req.get('Authorization')
   if (!auth) {
-    throw new Error('Lack of token')
+    res.status(401).json({ error: 'lack of token' })
   }
   const [, token] = auth.split(' ')
   try {
@@ -20,7 +20,7 @@ const Auth = async (req, res, next) => {
     req.user = { ...decodedToken, token: token }
     next()
   } catch (error) {
-    res.status(401).json({error: error.message})
+    res.status(401).json({ error: error.message })
   }
 }
 

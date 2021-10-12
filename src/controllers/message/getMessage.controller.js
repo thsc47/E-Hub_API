@@ -1,4 +1,4 @@
-class MessageRouter {
+class GetMessageRouter {
   static async execute(req) {
     try {
       console.log('oi')
@@ -8,4 +8,4 @@ class MessageRouter {
   }
 }
 
-module.exports = MessageRouter
+module.exports = GetMessageRouter
