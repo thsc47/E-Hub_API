@@ -1,5 +1,6 @@
 const Jwt = require('../controllers/auth/JWT')
 const Blocklist = require('../../redis/controllers/blocklist.controller')
+const Refresh = require('./refresh.middleware')
 
 async function validToken(token) {
   if (await Blocklist.hasToken(token)) {
