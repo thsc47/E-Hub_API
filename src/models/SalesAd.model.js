@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 const salesAdSchema = new Schema({
-  userID: { type: Schema.Types.ObjectId, ref: "User", required: true },
+  userID: { type: Schema.Types.ObjectId, ref: "user", required: true },
   status: [
     {
       pending: { type: Date, default: null },
