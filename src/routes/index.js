@@ -16,6 +16,6 @@ router.use('/ad-sale', authMiddleware, adSaleRouter)
 router.use('/my-account', authMiddleware, myAccountRouter)
 router.use('/wishlist', authMiddleware, wishlistRouter)
 router.use('/logout', authMiddleware, logoutRouter)
-router.use('/logout', authMiddleware, messageRouter)
+router.use('/messages', authMiddleware, messageRouter)
 
 module.exports = router

@@ -1,11 +1,12 @@
 const { Router } = require('express')
+const MessageRouter = require('../../controllers/message/message.controller')
 
 const messageRouter = Router()
 
 messageRouter.get('/', async (req, res) => {
   try {
-    const newAd = await CreateNewAd.execute(req)
-    res.status(201).json(newAd)
+    MessageRouter.execute()
+    res.send()
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
@@ -13,10 +14,9 @@ messageRouter.get('/', async (req, res) => {
 
 messageRouter.post('/', async (req, res) => {
   try {
-    const ads = await GetAllAds.execute(req)
-    res.json(ads)
+    res.send()
   } catch (error) {
-    res.status(500).json({ error: error.message })
+    res.status(500).json(error)
   }
 })
 
