@@ -3,11 +3,11 @@ const chatAsync = require('../../models/ChatAsync.model')
 class GetAllMessageRouter {
   static async execute(req) {
     try {
-      const { id } = req.user
+      const { id: sender } = req.user
       const result = await chatAsync.find({
         $or: [
-          { userID1: id},
-          {userID2: id }
+          { userID1: sender},
+          {userID2: sender }
         ]
       })
       return result
