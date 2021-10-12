@@ -3,12 +3,11 @@ const chatAsync = require('../../models/ChatAsync.model')
 class PostMessageRouter {
   static async execute(req) {
     try {
-      const { id: userID1 } = req.user
-      const { userID2, AdvertisementID, message } = req.body
+      const { id: sender } = req.user
+      const { reciver, AdvertisementID, message } = req.body
       const payload = {
-        userID1,
-        userID2,
-        sender: userID1,
+        sender,
+        reciver,
         AdvertisementID,
         message
       }
