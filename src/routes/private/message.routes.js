@@ -4,10 +4,10 @@ const PostMessageRouter = require('../../controllers/message/postMessage.control
 
 const messageRouter = Router()
 
-messageRouter.get('/', async (req, res) => {
+messageRouter.get('/:id', async (req, res) => {
   try {
-    GetMessageRouter.execute(req)
-    res.send()
+    const result = await GetMessageRouter.execute(req)
+    res.json(result)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }
