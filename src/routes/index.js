@@ -5,6 +5,8 @@ const authMiddleware = require('../middlewares/auth.middleware')
 const adSaleRouter = require('./private/adsale.route')
 const myAccountRouter = require('./private/myaccount.route')
 const wishlistRouter = require('./private/wishlist.routes')
+const logoutRouter = require('./private/logout.route')
+const messageRouter = require('./private/message.routes')
 
 const router = Router()
 
@@ -13,5 +15,7 @@ router.use('/login', loginRouter)
 router.use('/ad-sale', authMiddleware, adSaleRouter)
 router.use('/my-account', authMiddleware, myAccountRouter)
 router.use('/wishlist', authMiddleware, wishlistRouter)
+router.use('/logout', authMiddleware, logoutRouter)
+router.use('/messages', authMiddleware, messageRouter)
 
 module.exports = router
