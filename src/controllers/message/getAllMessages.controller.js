@@ -5,10 +5,7 @@ class GetAllMessageRouter {
     try {
       const { id: sender } = req.user
       const result = await chatAsync.find({
-        $or: [
-          { userID1: sender},
-          {userID2: sender }
-        ]
+        $or: [{ sender }, { reciver: sender }]
       })
       return result
     } catch (error) {

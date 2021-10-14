@@ -12,10 +12,11 @@ class GetMessageRouter {
 
       const result = await chatAsync.find({
         $or: [
-          { userID1: sender, userID2: reciver },
-          { userID1: reciver, userID2: sender }
+          { sender, reciver },
+          { sender: reciver, reciver: sender }
         ]
       })
+        
       return result
     } catch (error) {
       throw new Error(error)
