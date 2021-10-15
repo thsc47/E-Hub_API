@@ -1,9 +1,9 @@
 require('dotenv').config()
-require('../redis/config/blocklist')
+require('./redis/config/blocklist')
 const express = require('express')
 const cors = require('cors')
-const dbConnect = require('../config/db.config')
-const routes = require('./routes')
+const dbConnect = require('./config/db.config')
+const routes = require('./src/routes')
 
 const app = express()
 dbConnect.execute()
