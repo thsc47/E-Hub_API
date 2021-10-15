@@ -1,5 +1,4 @@
 require('dotenv').config()
-require('./redis/config/blocklist')
 const express = require('express')
 const cors = require('cors')
 const dbConnect = require('./config/db.config')
