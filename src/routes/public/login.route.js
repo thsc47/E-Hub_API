@@ -9,7 +9,7 @@ loginRouter.post("/", async (req, res) => {
     const user = await LogInController.handle(email,password);
     res.json(user)
   } catch (error) {
-    res.status(500).json(error.message);
+    res.status(401).json(error.message);
   }
 });
 
