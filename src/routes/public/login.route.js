@@ -4,9 +4,9 @@ const refresh = require('../../middlewares/refresh.middleware')
 const loginRouter = Router();
 
 loginRouter.post("/", async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
   try {
-    const user = await LogInController.handle(username,password);
+    const user = await LogInController.handle(email,password);
     res.json(user)
   } catch (error) {
     res.status(500).json(error.message);
