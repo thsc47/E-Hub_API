@@ -9,13 +9,13 @@ const salesAdSchema = new Schema({
     }
   ],
   title: { type: String, required: true },
-  categorie: String,
+  category: String,
   value: { type: Number },
   description: { type: String, min: 80, max: 9000 },
   photos: [{ photo: { type: String } }],
 
   manufacturer: { type: String },
-  useed: false
+  used: false
 })
 
 module.exports = model('salesAD', salesAdSchema)
