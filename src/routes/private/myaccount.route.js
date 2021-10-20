@@ -27,7 +27,7 @@ myAccountRouter.put('/edit', async (req, res) => {
 
 myAccountRouter.put(
   '/upload-profile-pic',
-  uploadImage.single('profile-pic'),
+  uploadImage.array('profile-pic'),
   async (req, res) => {
     try {
       const addPic = await SaveProfilePic.execute(req)

@@ -8,7 +8,7 @@ const userSchema = new Schema(
     name: { type: String, required: true },
     age: { type: Number, required: true },
     cpf: { type: Number, required: true },
-    photo: { type: String, default: null },
+    photo: [{ type: String, default: null }],
     street: { type: String, required: true },
     number: { type: Number, required: true },
     district: { type: String, required: true },
