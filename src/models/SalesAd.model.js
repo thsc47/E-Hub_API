@@ -12,7 +12,7 @@ const salesAdSchema = new Schema({
   category: String,
   price: { type: Number },
   description: { type: String, min: 80, max: 9000 },
-  files: [{ photo: { type: String } }],
+  files: [{  type: String  }],
 
   manufacturer: { type: String },
   used: false
