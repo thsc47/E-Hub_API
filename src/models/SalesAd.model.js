@@ -13,9 +13,11 @@ const salesAdSchema = new Schema({
   price: { type: Number },
   description: { type: String, min: 80, max: 9000 },
   files: [{  type: String  }],
-
   manufacturer: { type: String },
-  used: false
+  used: false,
+  email: { type: String, required: true },
+  name: { type: String, required: true },
+  phone: { type: Number, required: true },
 })
 
 module.exports = model('salesAD', salesAdSchema)
