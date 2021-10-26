@@ -7,10 +7,11 @@ class UpdateOneAd {
       const oldAd = await SalesAd.findById({ _id: id })
       const { body } = req
       const { files } = req
-
+      const paths = []
       if (files.length > 0) {
         files.map((file) => paths.push(file.path))
         const salesAd = Object.assign({}, body, { files: paths })
+        console.log(salesAd)
         const result = await SalesAd.findOneAndUpdate({ _id: id }, salesAd, {
           new: true
         })
