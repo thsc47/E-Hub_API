@@ -4,6 +4,7 @@ class UpdateOneAd {
     try {
       const { id } = req.query
       const { body } = req
+      
       const paths = []
       req.files.map((file) => paths.push(file.path))
       const salesAd = Object.assign({}, body, { files: paths })
@@ -11,6 +12,7 @@ class UpdateOneAd {
       const result = await SalesAd.findOneAndUpdate({ _id: id }, salesAd, {
         new: true
       })
+      console.log(result)
       return result
     } catch (error) {
       throw new error(error)

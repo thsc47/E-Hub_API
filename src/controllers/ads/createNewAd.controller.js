@@ -5,8 +5,9 @@ class CreateNewAd {
   static async execute(req) {
     try {
       const paths = []
+      let { body } = req
+      body = JSON.stringify(body)
       req.files.map(file => paths.push(file.path))
-      const { body } = req
       const { id } = req.user
       const salesAd = Object.assign({}, body, { files: paths })
 
