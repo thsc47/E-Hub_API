@@ -45,7 +45,7 @@ adSaleRouter.get('/my/search', async (req, res) => {
   }
 })
 
-adSaleRouter.put('/my/edit', checkCloudinary, uploadImage.array('files'), async (req, res) => {
+adSaleRouter.put('/my/edit',uploadImage.array('files'), async (req, res) => {
   try {
     const result = await UpdateOneAd.execute(req)
     res.status(201).json(result)
