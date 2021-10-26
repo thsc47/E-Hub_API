@@ -18,6 +18,9 @@ const salesAdSchema = new Schema({
   email: { type: String, required: true },
   name: { type: String, required: true },
   phone: { type: Number, required: true },
+},
+{
+  timestamps: true
 })
 
 module.exports = model('salesAD', salesAdSchema)
