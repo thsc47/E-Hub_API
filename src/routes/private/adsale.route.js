@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const uploadImage = require('../../../config/cloudinary.config')
+const checkCloudinary = require('../../middlewares/checkCloudinary')
 const CreateNewAd = require('../../controllers/ads/createNewAd.controller')
 const DeleteOneAd = require('../../controllers/ads/deleteOneAd.controller')
 const GetAllAds = require('../../controllers/ads/getAllAds.controller')
@@ -10,7 +11,6 @@ const adSaleRouter = Router()
 
 adSaleRouter.post('/new', uploadImage.array('files',),async (req, res) => {
   try {
-    console.log('rota: ',req.files)
     const newAd = await CreateNewAd.execute(req)
     res.status(201).json(newAd)
   } catch (error) {
@@ -46,7 +46,6 @@ adSaleRouter.get('/my/search', async (req, res) => {
 })
 
 adSaleRouter.put('/my/edit',uploadImage.array('files'), async (req, res) => {
-  
   try {
     const result = await UpdateOneAd.execute(req)
     res.status(201).json(result)

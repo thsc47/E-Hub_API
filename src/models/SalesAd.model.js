@@ -14,7 +14,7 @@ const salesAdSchema = new Schema({
   description: { type: String, min: 80, max: 9000 },
   files: [{  type: String  }],
   manufacturer: { type: String },
-  used: false,
+  used: {type: Boolean, default: false},
   email: { type: String, required: true },
   name: { type: String, required: true },
   phone: { type: Number, required: true },

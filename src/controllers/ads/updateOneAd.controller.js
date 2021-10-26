@@ -7,7 +7,6 @@ class UpdateOneAd {
       const oldAd = await SalesAd.findById({ _id: id })
       const { body } = req
       const { files } = req
-      const paths = []
 
       if (files.length > 0) {
         files.map((file) => paths.push(file.path))
@@ -23,6 +22,7 @@ class UpdateOneAd {
         })
         return result
       }
+
     } catch (error) {
       throw new error(error)
     }
