@@ -4,7 +4,7 @@ class GetAllAds {
     static async execute(req) {
         try {
             const { id } = req.user
-            const result = await SalesAD.find({ userID: id })
+            const result = await SalesAD.find({ userID: id }).populate('userID')
             return result
         } catch (error) {
             throw new Error(error)
