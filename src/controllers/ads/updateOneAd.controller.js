@@ -10,14 +10,16 @@ class UpdateOneAd {
       const paths = []
       if (files.length > 0) {
         files.map((file) => paths.push(file.path))
-        const salesAd = Object.assign({}, body, { files: paths })
+        const lowerTitle = body.title.toLowerCase()
+        const salesAd = Object.assign({}, body, { files: paths }, {title: lowerTitle})
         console.log(salesAd)
         const result = await SalesAd.findOneAndUpdate({ _id: id }, salesAd, {
           new: true
         })
         return result
       } else {
-        const newAd = Object.assign({}, body, { files: oldAd.files })
+        const lowerTitle = body.title.toLowerCase()
+        const newAd = Object.assign({}, body, { files: oldAd.files }, {title: lowerTitle})
         const result = await SalesAd.findOneAndUpdate({ _id: id }, newAd, {
           new: true
         })
