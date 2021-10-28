@@ -1,6 +1,5 @@
 const { Router } = require('express')
 const uploadImage = require('../../../config/cloudinary.config')
-const checkCloudinary = require('../../middlewares/checkCloudinary')
 const CreateNewAd = require('../../controllers/ads/createNewAd.controller')
 const DeleteOneAd = require('../../controllers/ads/deleteOneAd.controller')
 const GetAllAds = require('../../controllers/ads/getAllAds.controller')
@@ -60,15 +59,6 @@ adSaleRouter.delete('/my/delete', async (req, res) => {
     res.status(204).send()
   } catch (error) {
     res.status(500).json(error.message)
-  }
-})
-
-adSaleRouter.get('/all', async (req, res) => {
-  try {
-    const result = await GetAllAdsFromAllUsers.execute()
-    res.json(result)
-  } catch (error) {
-    console.error(error.message)
   }
 })
 
