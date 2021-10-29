@@ -17,17 +17,17 @@ Front-end link: https://e-hub-v1.herokuapp.com/
 
 ## Technologies and Frameworks applied
 
-bcryptjs;
-cloudinary;
-cors;
-crypto;
-dotenv;
-express;
-JWT;
-mongoose;
-multer;
-multer-storage-cloudinary;
-redis.
+- bcryptjs;
+- cloudinary;
+- cors;
+- crypto;
+- dotenv;
+- express;
+- JWT;
+- Mongoose;
+- Multer;
+- Multer-storage-cloudinary;
+- Redis.
 
 ## Usage
 
