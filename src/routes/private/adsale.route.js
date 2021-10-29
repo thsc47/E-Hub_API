@@ -3,12 +3,12 @@ const uploadImage = require('../../../config/cloudinary.config')
 const CreateNewAd = require('../../controllers/ads/createNewAd.controller')
 const DeleteOneAd = require('../../controllers/ads/deleteOneAd.controller')
 const GetAllAds = require('../../controllers/ads/getAllAds.controller')
-const GetAllAdsFromAllUsers = require('../../controllers/ads/getAllAdsfromAllUsers')
+const authMiddleware  = require('../../middlewares/auth.middleware')
 const GetOneAd = require('../../controllers/ads/getOneAd.controller')
 const UpdateOneAd = require('../../controllers/ads/updateOneAd.controller')
 const adSaleRouter = Router()
 
-adSaleRouter.post('/new', uploadImage.array('files',),async (req, res) => {
+adSaleRouter.post('/new',authMiddleware, uploadImage.array('files',),async (req, res) => {
   try {
     const newAd = await CreateNewAd.execute(req)
     res.status(201).json(newAd)
@@ -17,7 +17,7 @@ adSaleRouter.post('/new', uploadImage.array('files',),async (req, res) => {
   }
 })
 
-adSaleRouter.post('/new-image', uploadImage.array('files'), async (req, res) => {
+adSaleRouter.post('/new-image',authMiddleware, uploadImage.array('files'), async (req, res) => {
   try {
     const newAd = await AddNewAdImage.execute(req)
     res.status(201).json(newAd)
@@ -26,7 +26,7 @@ adSaleRouter.post('/new-image', uploadImage.array('files'), async (req, res) => 
   }
 })
 
-adSaleRouter.get('/my/all', async (req, res) => {
+adSaleRouter.get('/my/all',authMiddleware, async (req, res) => {
   try {
     const ads = await GetAllAds.execute(req)
     res.json(ads)
@@ -44,7 +44,7 @@ adSaleRouter.get('/my/search', async (req, res) => {
   }
 })
 
-adSaleRouter.put('/my/edit',uploadImage.array('files'), async (req, res) => {
+adSaleRouter.put('/my/edit',authMiddleware, uploadImage.array('files'), async (req, res) => {
   try {
     const result = await UpdateOneAd.execute(req)
     res.status(201).json(result)
@@ -53,7 +53,7 @@ adSaleRouter.put('/my/edit',uploadImage.array('files'), async (req, res) => {
   }
 })
 
-adSaleRouter.delete('/my/delete', async (req, res) => {
+adSaleRouter.delete('/my/delete',authMiddleware, async (req, res) => {
   try {
     await DeleteOneAd.execute(req)
     res.status(204).send()
