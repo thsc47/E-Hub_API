@@ -1,6 +1,6 @@
 # E-Hub
 
-This is a RESTful API developed as the conclusion work of the Ironhack bootcamp. The intention is to support an e-commerce system for used-products, known as E-hub
+This is a RESTful API developed to support a used goods e-commerce store, known as E-hub
 
 ## Links
 ---
